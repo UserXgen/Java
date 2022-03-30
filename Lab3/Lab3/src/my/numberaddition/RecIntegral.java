@@ -51,6 +51,7 @@ public class RecIntegral {
     public void SetLowLim(double vLowLim) throws IntegException{
         if((vLowLim <= 0.000001) || (vLowLim >= 1000000)) 
             throw new IntegException("Вводимые числа должны быть в диапазоне от 0,000001 до 1000000");
+
         lowLim = vLowLim;
     }
     public void SetUpLim(double vUpLim) throws IntegException{
@@ -64,6 +65,10 @@ public class RecIntegral {
         
         if((vStInteg <= 0.000001) || (vStInteg >= 1000000)) 
             throw new IntegException("Вводимые числа должны быть в диапазоне от 0,000001 до 1000000");
+        
+        if((upLim - lowLim) < vStInteg)
+            throw new IntegException("Шаг интегрирования не должен превышать диапазон вычисления");
+        
         stepInteg = vStInteg;
     }
     public void SetResult(double vRes){
