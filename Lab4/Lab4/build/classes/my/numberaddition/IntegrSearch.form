@@ -319,11 +319,9 @@
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jButtonFillTable" pref="135" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jButtonClear" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButtonReadFile" pref="135" max="32767" attributes="0"/>
-                              <Component id="jButtonWriteFile" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jButtonClear" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButtonReadFile" pref="135" max="32767" attributes="0"/>
+                          <Component id="jButtonWriteFile" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">

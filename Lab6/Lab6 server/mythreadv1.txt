@@ -1,0 +1,97 @@
+        long timestart = System.nanoTime() ;
+        
+        long timeend = System.nanoTime() ;
+        
+        long result = timeend - timestart;
+        
+        JFrame Frame = new JFrame();
+        JOptionPane.showMessageDialog(Frame," " + result);
+
+
+package my.numberaddition;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+
+public class MyThread extends Thread {
+    
+    private String str;
+    private double area;
+    private double lowLim;
+    private double upLim;
+    private double stepInteg;
+    private int iteration; 
+    private int endIteration;
+    private IntegrSearch.Function function;
+    
+    public boolean ret = false;
+    
+    MyThread(int vIteration, int vEndIteration, double vLowLim, double vUpLim, double vStepInteg, IntegrSearch.Function func){
+       
+        iteration = vIteration;
+        endIteration = vEndIteration;      
+        lowLim = vLowLim;
+        upLim = vUpLim;
+        stepInteg = vStepInteg;
+        function = func;
+       
+    }
+    
+    
+    public void run(){
+    
+        integralPartTrap();
+        
+        
+    }
+    
+    public double GetArea(){
+    
+        return area;
+        
+        
+    }
+    
+    public boolean Compare(String comp){
+    
+        try{
+            int points = 0;
+            
+            if((comp == null) || (comp.length() == 0))
+                return false;
+            
+            for(int i = 0; i < comp.length(); i++){
+                char c = comp.charAt(i);
+                if(c == '.')
+                    points++;
+
+                if((!Character.isDigit(c) &&  c != '.') || points > 1)
+                    throw new IntegException("Вводимые поля должны содержать только числа");
+            }
+        
+            return true;
+        }
+        
+        catch(IntegException err){
+                
+                JFrame errFrame = new JFrame();
+                JOptionPane.showMessageDialog(errFrame, err.getMessage());
+               
+                return false;
+            }
+    }
+
+    public void integralPartTrap() {
+        area = 0;
+ 
+        for (int i = iteration; i < endIteration; i++) {
+            
+            // System.out.println(iteration + " " + endIteration);
+            
+            area += stepInteg * (0.5 * (function.func(lowLim + i * stepInteg)+function.func(lowLim+(i+1)* stepInteg)));
+        }
+    
+    }
+    
+}
